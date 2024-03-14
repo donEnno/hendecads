@@ -13,7 +13,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import numpy as np
-
 import os
 
 # Load the data
@@ -24,4 +23,3 @@ def load_data(file_path='/ebio/abt1_share/prediction_hendecads/data/seq2ss_data/
 
     df = pd.read_csv(file_path)
     df = df[(df.seq.str.len() <= max_seq_len) & (~df.has_nonstd_aa)]
-    
