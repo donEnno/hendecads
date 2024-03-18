@@ -19,7 +19,7 @@ from sklearn.model_selection import train_test_split
 from utils import plot_prediction, plot_confusion_matrix
 
 
-def load_data(file_path='/ebio/abt1_share/prediction_hendecads/data/ss_pred/seq.csv', max_seq_len=256):
+def load_data(file_path='/ebio/abt1_share/prediction_hendecads/data/ss_pred/seq.csv', max_seq_len=2048):
     df = pd.read_csv(file_path)
     df = df[(df.seq.str.len() <= max_seq_len) & (~df.has_nonstd_aa)]    
 
@@ -27,7 +27,7 @@ def load_data(file_path='/ebio/abt1_share/prediction_hendecads/data/ss_pred/seq.
 
 
 def load_hendecads_data(file_path='/ebio/abt1_share/prediction_hendecads/data/new_prot_fam_data/final_dataset.fasta',
-              max_seq_len=256):
+              max_seq_len=2048):
 
     fasta_sequences = SeqIO.parse(open(file_path), 'fasta')
     n_seq = len(list(fasta_sequences))
@@ -57,7 +57,7 @@ def load_hendecads_data(file_path='/ebio/abt1_share/prediction_hendecads/data/ne
         
 
 def tokenize_data(df, 
-                  max_seq_len=256, data_flavor='kaggel'):
+                  max_seq_len=2048, data_flavor='kaggel'):
     
     tokenizer_in = Tokenizer(char_level=True)
     tokenizer_in.fit_on_texts(df.seq)
