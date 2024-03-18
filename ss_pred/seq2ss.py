@@ -1,5 +1,3 @@
-from utils import plot_prediction, plot_confusion_matrix
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -17,6 +15,8 @@ from keras.layers import LSTM, Embedding, Dense, TimeDistributed, Bidirectional
 from keras.preprocessing.text import Tokenizer
 from keras.utils import to_categorical, pad_sequences
 from sklearn.model_selection import train_test_split
+
+from utils import plot_prediction, plot_confusion_matrix
 
 
 def load_data(file_path='/ebio/abt1_share/prediction_hendecads/data/ss_pred/seq.csv', max_seq_len=256):
