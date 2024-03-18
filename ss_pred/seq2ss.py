@@ -19,7 +19,7 @@ from keras.utils import to_categorical, pad_sequences
 from sklearn.model_selection import train_test_split
 
 
-def load_data(file_path='/ebio/abt1_share/prediction_hendecads/data/seq2ss_data/seq.csv', max_seq_len=256):
+def load_data(file_path='/ebio/abt1_share/prediction_hendecads/data/ss_pred/seq.csv', max_seq_len=256):
     df = pd.read_csv(file_path)
     df = df[(df.seq.str.len() <= max_seq_len) & (~df.has_nonstd_aa)]    
 
