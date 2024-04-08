@@ -3,8 +3,7 @@ import numpy as np
 import seaborn as sns
 
 
-def plot_prediction(y_pred, y_test,
-                    save_fig=False, fig_path=None):
+def plot_prediction(y_pred, y_test, fig_path=None):
     p1 = np.argmax(y_pred, axis=-1)[0]
     y1 = np.argmax(y_test, axis=-1)[0]
     
@@ -20,14 +19,13 @@ def plot_prediction(y_pred, y_test,
     patches = [plt.Rectangle((0, 0), 1, 1, color=color) for color in colors]
     ax.legend(patches, labels, loc='center left', bbox_to_anchor=(1, 0.5))
     
-    if save_fig:
+    if fig_path is not None:
         plt.savefig(fig_path, bbox_inches='tight')
     else:
         plt.show()
 
 
-def plot_confusion_matrix(i, y_pred, y_test,
-                          save_fig=False, fig_path=None):
+def plot_confusion_matrix(i, y_pred, y_test, fig_path=None):
     p1 = np.argmax(y_pred, axis=-1)[0]
     y1 = np.argmax(y_test, axis=-1)[0]
     
@@ -48,7 +46,7 @@ def plot_confusion_matrix(i, y_pred, y_test,
     ax.set_xticklabels(['C', 'X'])
     ax.set_yticklabels(['C', 'X'], rotation=0)
 
-    if save_fig:
+    if fig_path is not None:
         plt.savefig(fig_path, bbox_inches='tight')
     else:
         plt.show()
