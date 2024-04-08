@@ -94,7 +94,7 @@ def split_data(X, y,
 
 
 def build_model(n_words, n_tags, 
-                max_seq_len=256):
+                max_seq_len=2048):
     
     input = Input(shape=(max_seq_len,))
     
