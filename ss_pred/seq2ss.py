@@ -18,46 +18,59 @@ from sklearn.model_selection import train_test_split
 
 from utils import plot_prediction, plot_confusion_matrix
 
+# ------------------------------------------------------------------------------
+# Device configuration
 
-def load_data(file_path='/ebio/abt1_share/prediction_hendecads/data/ss_pred/seq.csv', max_seq_len=2048):
+if os.getcwd() == '/home/enno/uni/SS23/thesis':
+    file_path = '/home/enno/uni/SS23/thesis/data/ss_data/seq.csv'
+else:
+    file_path = '/ebio/abt1_share/prediction_hendecads/data/ss_pred/seq.csv'
+
+# ------------------------------------------------------------------------------
+# Data
+
+MAX_SEQ_LEN = 4096
+
+def load_data(file_path=file_path, max_seq_len=MAX_SEQ_LEN):
     df = pd.read_csv(file_path)
     df = df[(df.seq.str.len() <= max_seq_len) & (~df.has_nonstd_aa)]    
 
     return df
 
 
-def load_hendecads_data(file_path='/ebio/abt1_share/prediction_hendecads/data/new_prot_fam_data/final_dataset.fasta',
-              max_seq_len=2048):
+# def load_hendecads_data(file_path=file_path,
+#               max_seq_len=2048):
+      # Uses data from New Protein Families
 
-    fasta_sequences = SeqIO.parse(open(file_path), 'fasta')
-    n_seq = len(list(fasta_sequences))
+#     fasta_sequences = SeqIO.parse(open(file_path), 'fasta')
+#     n_seq = len(list(fasta_sequences))
 
-    df = pd.DataFrame(columns=['id', 'seq', 'stretch_ix'])
+#     df = pd.DataFrame(columns=['id', 'seq', 'stretch_ix'])
 
-    pattern = r'\[\[.*?\]\]'
+#     pattern = r'\[\[.*?\]\]'
 
-    for seq_ix, seq in enumerate(SeqIO.parse(open(file_path), 'fasta')):
-        print(f"Processing sequence {seq_ix+1}/{n_seq}", end='\r')
+#     for seq_ix, seq in enumerate(SeqIO.parse(open(file_path), 'fasta')):
+#         print(f"Processing sequence {seq_ix+1}/{n_seq}", end='\r')
 
-        if len(seq.seq) > max_seq_len:
-            continue
+#         if len(seq.seq) > max_seq_len:
+#             continue
         
-        s = str(seq.seq)
-        d = str(seq.description)
+#         s = str(seq.seq)
+#         d = str(seq.description)
         
-        # Finds string in seq.description that matches CC stretches
-        stretches = eval(re.findall(pattern, d.split('|||')[-1])[0])
-        cc_ix = [int(x) for stretch in stretches for x in np.arange(stretch[0], stretch[1]+1)]
+#         # Finds string in seq.description that matches CC stretches
+#         stretches = eval(re.findall(pattern, d.split('|||')[-1])[0])
+#         cc_ix = [int(x) for stretch in stretches for x in np.arange(stretch[0], stretch[1]+1)]
         
-        df.loc[len(df)] = [seq.id, s, str(cc_ix)]  # Why needs this to be a sting?
+#         df.loc[len(df)] = [seq.id, s, str(cc_ix)]  # Why needs this to be a sting?
 
-    df['seq_mask'] = df['seq'].apply(lambda seq: ''.join(['C' if s_i.islower() else 'X' for s_i in seq]))
+#     df['seq_mask'] = df['seq'].apply(lambda seq: ''.join(['C' if s_i.islower() else 'X' for s_i in seq]))
 
-    return df
+#     return df
         
 
 def tokenize_data(df, 
-                  max_seq_len=2048, data_flavor='kaggel'):
+                  max_seq_len=MAX_SEQ_LEN, data_flavor='kaggel'):
     
     tokenizer_in = Tokenizer(char_level=True)
     tokenizer_in.fit_on_texts(df.seq)
@@ -92,9 +105,15 @@ def split_data(X, y,
     
     return X_train, X_val, X_test, y_train, y_val, y_test
 
+# ------------------------------------------------------------------------------
+# Model
 
 def build_model(n_words, n_tags, 
+<<<<<<< HEAD
                 max_seq_len=2048):
+=======
+                max_seq_len=MAX_SEQ_LEN):
+>>>>>>> f0f3c94e34f2a422a7820c520daf8fe3bcafa01a
     
     input = Input(shape=(max_seq_len,))
     
@@ -127,6 +146,9 @@ def train_model(model, X_train, X_val, y_train, y_val,
 
     return model
 
+# ------------------------------------------------------------------------------
+# Main
+
 if __name__ == '__main__':
     print("Loading data...")
     df = load_data()
@@ -148,5 +170,5 @@ if __name__ == '__main__':
     print("Plotting predictions...")
     y_pred = model.predict(X_test[1:2])
     
-    plot_prediction(y_pred, y_test[1:2])
-    plot_confusion_matrix(1, y_pred, y_test[1:2])
+    plot_prediction(y_pred, y_test[1:2], fig_path='/ebio/abt1_share/prediction_hendecads/data/ss_pred/plot_pred.csv')
+    plot_confusion_matrix(1, y_pred, y_test[1:2], fig_path='/ebio/abt1_share/prediction_hendecads/data/ss_pred/plot_pred.csv')
