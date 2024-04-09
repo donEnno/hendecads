@@ -33,7 +33,7 @@ Once we have confirmed Hendecads form the sequence analysis:
 	--> If yes, run AlphaFold on them
 
 ------
-## Secondaty Structure Prediction
+### Secondaty Structure Prediction
 
 **Goal** is to implement a pipeline that handles data processing, modelling and analysis of results.
 
