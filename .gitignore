@@ -324,3 +324,4 @@ cython_debug/
 data*
 literature/
 docs/
+seq_analysis/plots/
