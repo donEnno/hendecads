@@ -5,9 +5,8 @@
 - [x] Visually, find hydrophobic regions
 
 - [ ] Come up with a rule for Hendecadness
-	--> Gly/Pro should be low/constant
 
-- [ ] Blast on confirmed 11-repeats
+- [ ] Blast on confirmed hendecads
 
 - [ ] (Cluster Embeddings?)
 
