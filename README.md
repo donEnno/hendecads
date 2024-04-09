@@ -1,20 +1,49 @@
-# Prediction of Hendecads
+### Sequence Analysis
 
-## Outline
+**Goal** is to derive a "rule" which allows confident separation from true hendecads and other 11 repeats.
+
+- [x] Visually, find hydrophobic regions
+
+- [ ] Come up with a rule for Hendecadness
+	--> Gly/Pro should be low/constant
+
+- [ ] Blast on confirmed 11-repeats
+
+- [ ] (Cluster Embeddings?)
+
+------
 ### DeepCoil
-- [ ] Benchmark DeepCoil on NPF data
-- [ ] Benchmark DeepCoil + latest data on NPF data
-- [ ] Benchmark DeepCoil + latest data + PT5 embedding on NPF data
-- [ ] Benchmark DeepCoil + latest data + PT5 embedding + selected seq from NPF on NPF data
 
-### PCOILS
-- [ ] Benchmark PCOILS on NPF data
+**Goal** is to benchmark and develop DeepCoil further.
 
-### NPF Data Analysis
-- [ ] Method to assess "Hendecadness" in NPF data
+- [x] Rerun DC and visualize
 
-The goal is to separate hendecads from other 11-repeat motifs by analyzing specific AA patterns like presence/absence of Prolines, hydrophobic residues in expected positions, ...
+Four approaches to be done:
 
-## General Considerations
-- [ ] Find "universal" way of estimating and visualzing performances
-- [ ] Find "universal" way of handling data (data must fit pipeline, not vice versa)
+- [ ] Train DeepCoil exactly the same way
+- [ ] + latest data
+- [ ] + latest data + PT5 - *updated DC*
+- [ ] + latest data + PT5 + selected sequences from NPF - *new DC*
+
+At some point try to reproduce your error: lower/uppercase predictions
+
+Once we have confirmed Hendecads form the sequence analysis:
+- [ ] Does DC capture them? 
+	--> If yes, which groups?
+	--> If yes, run AlphaFold on them
+
+------
+## Secondaty Structure Prediction
+
+**Goal** is to implement a pipeline that handles data processing, modelling and analysis of results.
+
+- [ ] More advanced
+
+- [ ] How to generally visualize/assess the performance of my predictions?
+
+- [ ] How to generally handle data?
+	--> Try to find a way s.t. I later have to parse the data to fit my program, not my program fit the data!
+
+- [ ] Filter NPF data by 11-repeats and try to separate sequences that actually represent hendecads
+	--> they are often "buried" in a sequence of heptads
+	--> Family specific coil-coiledness
