@@ -12,9 +12,9 @@ dc = DeepCoil(use_gpu=False)
 
 result_df = pd.DataFrame(columns=['id', 'sequence', 'cc', 'hept'])
 
-CHUNK = 100
+CHUNK = 1000
 
-for i in range(0, 1000, CHUNK):
+for i in range(0, len(inp), CHUNK):
     t0 = time.time()
     print(f"Processing sequences {i+1}-{min(i+CHUNK, len(inp))}", end='\r')
 
@@ -28,4 +28,4 @@ for i in range(0, 1000, CHUNK):
 
     print(f"Processing sequences {i+1}-{min(i+CHUNK, len(inp))} took {time.time()-t0:.2f} seconds")
 
-result_df.to_csv('/ebio/abt1_share/prediction_hendecads/repo/deepcoil_analysis/deepcoil_results_backup.csv', index=False)
+result_df.to_csv('/ebio/abt1_share/prediction_hendecads/repo/deepcoil_analysis/deepcoil_results.csv', index=False)
