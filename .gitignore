@@ -321,7 +321,10 @@ cython_debug/
 #.idea/
 
 # Exclude literature, documentation and data
-data*
-literature/
-docs/
+01_data*
+02_deepcoil_analysis/plots/
+02_seq_analysis/plots/
+03_docs_notes_slides/
 seq_analysis/plots/
+
+*.odp#
