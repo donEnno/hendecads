@@ -326,5 +326,6 @@ cython_debug/
 02_seq_analysis/plots/
 03_docs_notes_slides/
 seq_analysis/plots/
+02_seq_analysis/CLANS_2.0.8/
 
 *.odp#
