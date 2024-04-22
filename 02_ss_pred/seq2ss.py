@@ -19,17 +19,40 @@ from sklearn.model_selection import train_test_split
 from utils import plot_prediction, plot_confusion_matrix
 
 # ------------------------------------------------------------------------------
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Disable GPU visibility to TensorFlow
+# Print TensorFlow version
+print("TensorFlow version: ", tf.__version__)
+
+# Print CUDA version
+build_info = tf.sysconfig.get_build_info()
+print("CUDA version: ", build_info['cuda_version'])
+
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+
+# Set TensorFlow to use all available GPU cards
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+    try:
+        tf.config.experimental.set_visible_devices(gpus, 'GPU')
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+        logical_gpus = tf.config.experimental.list_logical_devices('GPU')
+        print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+    except RuntimeError as e:
+        print(e)
+
+# ------------------------------------------------------------------------------
 # Device configuration
 
 if os.getcwd() == '/home/enno/uni/SS23/thesis':
     file_path = '/home/enno/uni/SS23/thesis/data/ss_data/seq.csv'
 else:
-    file_path = '/ebio/abt1_share/prediction_hendecads/data/ss_pred/seq.csv'
+    file_path = '/ebio/abt1_share/prediction_hendecads/0_data/ss_pred/seq.csv'
 
 # ------------------------------------------------------------------------------
 # Data
 
-MAX_SEQ_LEN = 4096
+MAX_SEQ_LEN = 128  # 4096
 
 def load_data(file_path=file_path, max_seq_len=MAX_SEQ_LEN):
     df = pd.read_csv(file_path)
@@ -166,5 +189,5 @@ if __name__ == '__main__':
     print("Plotting predictions...")
     y_pred = model.predict(X_test[1:2])
     
-    plot_prediction(y_pred, y_test[1:2], fig_path='/ebio/abt1_share/prediction_hendecads/data/ss_pred/plot_pred.csv')
-    plot_confusion_matrix(1, y_pred, y_test[1:2], fig_path='/ebio/abt1_share/prediction_hendecads/data/ss_pred/plot_pred.csv')
+    plot_prediction(y_pred, y_test[1:2], fig_path='/ebio/abt1_share/prediction_hendecads/0_data/ss_pred/plot_pred.png')
+    plot_confusion_matrix(1, y_pred, y_test[1:2], fig_path='/ebio/abt1_share/prediction_hendecads/0_data/ss_pred/plot_pred.png')
