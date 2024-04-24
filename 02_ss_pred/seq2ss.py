@@ -23,9 +23,7 @@ from utils import plot_prediction, plot_confusion_matrix
 # Print TensorFlow version
 print("TensorFlow version: ", tf.__version__)
 
-# Print CUDA version
-build_info = tf.sysconfig.get_build_info()
-print("CUDA version: ", build_info['cuda_version'])
+print("Is built with CUDA: ", tf.test.is_built_with_cuda())
 
 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 
