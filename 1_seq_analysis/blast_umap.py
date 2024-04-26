@@ -8,7 +8,7 @@ df = pd.read_csv('/ebio/abt1_share/prediction_hendecads/3_CLANS/nxnblast', sep='
 df.columns = ['i', 'j', 'score']
 
 # Create a matrix
-matrix = np.zeros((df['i'].max(), df['j'].max()))
+matrix = np.zeros((df['i'].max()+1, df['j'].max()+1))
 
 for i, j, score in df.values:
     matrix[int(i), int(j)] = score
