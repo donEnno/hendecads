@@ -25,4 +25,4 @@ embedding = reducer.fit_transform(matrix)
 # Plot
 print('Plot')
 plt.scatter(embedding[:, 0], embedding[:, 1], s=1)
-plt.savefig('/ebio/abt1_share/prediction_hendecads/1_repo/1_seq_analysis/umap.png')
+plt.savefig('/ebio/abt1_share/prediction_hendecads/1_repo/1_seq_analysis/umap_scaled.png')
