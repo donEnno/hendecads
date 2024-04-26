@@ -1,8 +1,8 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
-import umap
+import pandas as pd # type: ignore
+import numpy as np # type: ignore
+import matplotlib.pyplot as plt # type: ignore
+from sklearn.preprocessing import StandardScaler # type: ignore
+import umap # type: ignore
 
 df = pd.read_csv('/ebio/abt1_share/prediction_hendecads/3_CLANS/nxnblast', sep='\t', header=None)
 df.columns = ['i', 'j', 'score']
