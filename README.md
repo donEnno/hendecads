@@ -4,11 +4,19 @@
 - 1, ... are different projects within the thesis
 
 So for example
-
-1_RegEx		_the subproject_
- |- 0_data  _the data generated in RegEx_
- |- 0_plots _the plots created in RegEx_
- |- 1_TMP	_RegEx extended (or reduced) to TMPs only_
-	 |- 0_data 	_data from TMPs only_
-	 |-1_3R	_TMP reduced to 3R only_
-	...
+```
+1_SubProject
+---|> 0_data  		
+---|> 0_plots
+---|> doStuff.ipynb
+---|> doStuff.py
+---|> 1_ExtendedAnalysis	
+------|> 0_data
+------|> DoElaborateStuff.ipynb 	
+------|> 1_EvenFurtherExtendedAnalysis
+----------|> 0_data
+----------|> 0_plots
+----------|> ThisWillMaybeEndUpInTheThesisStuff.ipynb
+---|> 2_OtherExtendedAnalysis
+2_NextSubProject
+```
