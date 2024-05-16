@@ -322,11 +322,12 @@ cython_debug/
 
 # Exclude literature, documentation and data
 data*
+1_seq_analysis/regEx.csv
 2_deepcoil_analysis/plots/
 2_seq_analysis/plots/
+2_seq_analysis/CLANS_2.0.8/
 3_docs_notes_slides/
 seq_analysis/plots/
-2_seq_analysis/CLANS_2.0.8/
 blast_output/
 clans/
 *.odp#
