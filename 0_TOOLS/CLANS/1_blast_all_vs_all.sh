@@ -1,4 +1,4 @@
-INPUT_FILE='/home/enno/uni/SS24/thesis/1_RegEx/1_TMP/cd_out/5R_1MM_seq.fasta'
+INPUT_FILE='/home/enno/uni/SS24/thesis/1_RegEx/1_TMP/cd_out/3R_0MM_seq.fasta'
 
 SEQ_COUNT=$(egrep '^>' $INPUT_FILE | wc -l)
 
@@ -7,7 +7,7 @@ clans_eval=1e-5
 GAPOPEN=11
 GAPEXT=1
 
-threads=10
+threads=12
 
 echo "#Performing ${SEQ_COUNT} X ${SEQ_COUNT} pairwise BLAST+ comparisons." > process.log
 
