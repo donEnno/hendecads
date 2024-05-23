@@ -1,4 +1,4 @@
-INPUT_FILE='/home/enno/uni/SS24/thesis/1_RegEx/1_TMP/cd_out/3R_1MM_seq.fasta'
+INPUT_FILE='/home/enno/uni/SS24/thesis/1_RegEx/1_TMP/cd_out/3R_2MM_seq.fasta'
 
 SEQ_COUNT=$(egrep '^>' $INPUT_FILE | wc -l)
 
