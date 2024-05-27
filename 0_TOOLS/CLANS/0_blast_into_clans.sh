@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Directory containing the files
-DIRECTORY="/home/enno/uni/SS24/thesis/1_RegEx/1_TMP/cd_out_5R"
-# DIRECTORY="/home/enno/uni/SS24/thesis/1_RegEx/0_data/test"
+DIRECTORY="../../1_RegEx/1_TMP/cd_out_5R"
+DIRECTORY="../..//1_RegEx/0_data/test"
 
 # P-value for run_clans.sh
 PVAL="1E-2"
@@ -20,5 +20,5 @@ do
   mv "myfile.clans" "${BASE_NAME}.clans"
 
   # Run run_clans.sh on the output of the previous script
-  ./run_clans.sh "${BASE_NAME}.clans" "$PVAL"
+  # ./run_clans.sh "${BASE_NAME}.clans" "$PVAL"
 done
