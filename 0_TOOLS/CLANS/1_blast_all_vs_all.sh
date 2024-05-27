@@ -1,9 +1,18 @@
-INPUT_FILE='/home/enno/uni/SS24/thesis/1_RegEx/1_TMP/cd_out/5R_0MM_seq.fasta'
+#!/bin/bash
+
+# Check if input file is provided
+if [ -z "$1" ]
+then
+  echo "No input file provided"
+  exit 1
+fi
+
+INPUT_FILE=$1
 
 SEQ_COUNT=$(egrep '^>' $INPUT_FILE | wc -l)
 
 matrix_content="BLOSUM62"
-clans_eval=1
+clans_eval=1e-2
 GAPOPEN=11
 GAPEXT=1
 

@@ -484,3 +484,5 @@ cython_debug/
 # Exclude unnecessary files and files that are > 100MB
 0_DOCS_NOTES_SLIDES/
 1_RegEx/0_data/regEx.csv
+0_TOOLS/CLANS/nxnblast
+/home/enno/uni/SS24/thesis/0_TOOLS/CLANS/nxnblast

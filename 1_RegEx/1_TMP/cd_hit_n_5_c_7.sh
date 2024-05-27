@@ -1,7 +1,7 @@
 #!/bin/bash
 
-input_dir="/home/enno/uni/SS24/thesis/1_RegEx/0_data/fasta"
-output_dir="/home/enno/uni/SS24/thesis/1_RegEx/1_TMP/cd_out"
+input_dir="/home/enno/uni/SS24/thesis/1_RegEx/0_data/fasta_5R"
+output_dir="/home/enno/uni/SS24/thesis/1_RegEx/1_TMP/cd_out_5R"
 
 for input_file in "$input_dir"/*.fasta
 do
