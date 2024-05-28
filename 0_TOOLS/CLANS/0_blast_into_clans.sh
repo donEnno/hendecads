@@ -11,9 +11,11 @@ PVAL="1E-2"
 find $DIRECTORY -type f -name "*.fasta" | while read -r FILE
 do
   # Run 1_blast_all_vs_all.sh on the file
+  echo $FILE
   ./ebio/abt1_share/prediction_hendecads/1_repo/0_TOOLS/CLANS/1_blast_all_vs_all.sh $FILE
 
   # Extract the base name of the file
+  echo $BASE_NAME
   BASE_NAME=$(basename $FILE)
 
   # mv myfile.clans to basename.clans
