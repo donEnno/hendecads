@@ -2,7 +2,7 @@
 
 # Directory containing the files
 DIRECTORY="../../1_RegEx/1_TMP/cd_out_5R"
-DIRECTORY="../..//1_RegEx/0_data/test"
+DIRECTORY="../../1_RegEx/0_data/test"
 
 # P-value for run_clans.sh
 PVAL="1E-2"
